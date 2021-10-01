@@ -5,8 +5,6 @@
 
 using namespace SimpleLoRaWAN;
 
-BufferedSerial pc(USBTX, USBRX, 115200);
-
 Node node(keys, pins);
 
 int main(void)
