@@ -1,11 +1,14 @@
+.vscode/
+
 mbed_settings.py
 mbed_settings.pyc
 
 BUILD/
 
-src/settings.h
+src/config.h
 
 mbed-os/
 mbed-Simple-LoRaWAN/
-pulu-LoRa-message/
+mbed-lorawan-serialization/
 pulu-sensor-class/
+pulu-converters/
