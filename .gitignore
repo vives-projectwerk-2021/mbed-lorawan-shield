@@ -4,3 +4,8 @@ mbed_settings.pyc
 BUILD/
 
 src/settings.h
+
+mbed-os/
+mbed-Simple-LoRaWAN/
+pulu-LoRa-message/
+pulu-sensor-class/

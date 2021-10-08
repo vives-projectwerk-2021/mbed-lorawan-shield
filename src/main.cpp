@@ -1,7 +1,8 @@
 #include "mbed.h"
 #include "Simple-LoRaWAN.h"
-#include "LoRaMessage.h"
 #include "settings.h"
+#include "Sensor.h"
+#include "LoRaMessage.h"
 
 using namespace SimpleLoRaWAN;
 
@@ -11,26 +12,22 @@ int main(void)
 {
   printf("\r\n*** Starting LoRaWAN Shield Example ***\r\n");
   
-  uint16_t lux = 0;
-  uint16_t temperature = 0;
-  uint16_t moisture = 0;
-  uint8_t battery = 100;
-  uint8_t sensors_status = 0b00000000;
-
+  Pulu::Sensor sensors;
   while(true) {
-    LoRaMessage message;
-    message.addUint16(lux);
-    message.addUint16(temperature);
-    message.addUint16(temperature);
-    message.addUint16(moisture);
-    message.addUint16(moisture);
-    message.addUint16(moisture);
-    message.addUint16(moisture);
-    message.addUint16(moisture);
-    message.addUint8(battery);
-    battery = battery<1?100:battery-1;
-    message.addUint8(sensors_status);
-    node.send(message.getMessage(), message.getLength());
+    sensors.Read();
+    uint16_t* sensorValues = sensors.Values();
+    Pulu::LoRaMessage message;
+    message.setLightLevel(sensorValues[0])
+    .setAirTemperature(sensorValues[1])
+    .setGroundTemperature(sensorValues[2])
+    .setMoistureLevel1(sensorValues[3])
+    .setMoistureLevel2(sensorValues[4])
+    .setMoistureLevel3(sensorValues[5])
+    .setMoistureLevel4(sensorValues[6])
+    .setMoistureLevel5(sensorValues[7])
+    .setBatteryStatus(sensorValues[8]);
+    
+    node.send(message.message(), message.length());
     printf("Message sent.");
     ThisThread::sleep_for(30s);
   }
