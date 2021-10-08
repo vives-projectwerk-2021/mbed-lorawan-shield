@@ -1,7 +1,7 @@
 #pragma once
 #include "Simple-LoRaWAN.h"
 #include "sensorManager.h"
-#include "settings.h"
+#include "config.h"
 
 namespace Pulu {
     class App {

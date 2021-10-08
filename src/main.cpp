@@ -1,4 +1,4 @@
-#include "settings.h"
+#include "config.h"
 #include "puluApp.h"
 
 Pulu::config config;
