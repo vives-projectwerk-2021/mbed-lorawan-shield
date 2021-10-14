@@ -10,5 +10,5 @@ src/config.h
 mbed-os/
 mbed-Simple-LoRaWAN/
 mbed-lorawan-serialization/
-pulu-sensor-class/
+pulu-sensor-manager/
 pulu-converters/
