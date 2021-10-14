@@ -11,7 +11,7 @@ namespace Pulu {
             void run();
         
         private:
-            SimpleLoRaWAN::Node* node;
-            Pulu::sensorManager* sensors;
+            SimpleLoRaWAN::Node node;
+            Pulu::sensorManager sensors;
     };
 };
