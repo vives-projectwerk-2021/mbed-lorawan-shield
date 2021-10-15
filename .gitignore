@@ -12,4 +12,5 @@ mbed-Simple-LoRaWAN/
 mbed-lorawan-serialization/
 pulu-sensor-manager/
 pulu-converters/
+pulu-EEPROM_24AA64/
 EEPROM_24AA64/
