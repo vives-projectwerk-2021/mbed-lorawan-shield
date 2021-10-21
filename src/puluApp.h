@@ -1,13 +1,16 @@
 #pragma once
-#include "Simple-LoRaWAN.h"
-#include "sensorManager.h"
 #include "config.h"
 #include "EEPROM_24AA64.h"
+#include "Simple-LoRaWAN.h"
+#include "sensorManager.h"
 
 namespace Pulu {
     class App {
+        private:
+            Pulu::config config;
+
         public:
-            App(Pulu::config config);
+            App();
 
             void run();
 

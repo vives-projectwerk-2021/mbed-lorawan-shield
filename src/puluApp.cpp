@@ -4,7 +4,8 @@
 #include "converters.h"
 
 namespace Pulu {
-    App::App(Pulu::config config) :
+    App::App() :
+        config(),
         eeprom(config.eeprom.sda, config.eeprom.scl, config.eeprom.address),
         node(get_LoRaWAN_keys(), config.lorawan.pins),
         sensors()

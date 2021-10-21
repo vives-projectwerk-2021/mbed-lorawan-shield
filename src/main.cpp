@@ -1,8 +1,6 @@
-#include "config.h"
 #include "puluApp.h"
 
-Pulu::config config;
-Pulu::App app(config);
+Pulu::App app;
 
 int main(void)
 {
