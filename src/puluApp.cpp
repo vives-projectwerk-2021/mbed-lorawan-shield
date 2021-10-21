@@ -10,7 +10,9 @@ namespace Pulu {
         node(get_LoRaWAN_keys(), config.lorawan.pins),
         sensors()
     {   
-        
+        if(get_wait_time(wait_time)) { // ERROR OCCURED
+            wait_time = 30; 
+        }
     };
     
     void App::run() {
@@ -18,7 +20,7 @@ namespace Pulu {
         while(true) {
             LoRaMessage message = Pulu::Converters::sensorValues_to_LoRaMessage(sensors.values());
             node.send(message.getMessage(), message.getLength());
-            ThisThread::sleep_for(30s);
+            ThisThread::sleep_for(wait_time * 1s);
         }
     }
 
@@ -56,5 +58,16 @@ namespace Pulu {
             return keys;
         }
         return {};
+    }
+
+    bool App::get_wait_time(uint16_t &wait_time) {
+        return eeprom.read((char*)&wait_time, 2, 45);
+    }
+    bool App::set_wait_time(uint16_t wait_time) {
+        if(eeprom.write((char*)&wait_time, 2, 45)) {
+            return true;
+        }
+        this->wait_time = wait_time;
+        return false;
     }
 };
