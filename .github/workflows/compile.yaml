@@ -18,6 +18,6 @@ jobs:
     - run: make
     - uses: actions/upload-artifact@v2
       with:
-        name: firmware
+        name: pulu-${{ github.sha }}
         path: 'BUILD/pulu-*.bin'
         retention-days: 30

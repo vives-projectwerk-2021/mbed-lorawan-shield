@@ -4,4 +4,4 @@ VERSION = latest
 BUILDER_VERSION = latest
 
 all:
-	@ docker run -v $(firmware_path):/firmware ghcr.io/vives-projectwerk-2021/pulu-firmware-builder:$(BUILDER_VERSION) $(VERSION)
+	@ docker run -e "TERM=xterm" -v $(firmware_path):/firmware ghcr.io/vives-projectwerk-2021/pulu-firmware-builder:$(BUILDER_VERSION) $(VERSION)
