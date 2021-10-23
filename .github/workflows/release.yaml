@@ -18,7 +18,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ github.token }}
-    - run: make
+    - name: Get version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+    - run: make VERSION=${{ steps.get_version.outputs.VERSION }}
     - uses: ncipollo/release-action@v1
       with:
         artifacts: 'BUILD/pulu-*.bin'
