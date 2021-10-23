@@ -1,8 +1,5 @@
-name: Compile version
-on:
-  release:
-    types:
-      - created
+name: Compile
+on: [push]
 
 jobs:
   compile:
@@ -19,11 +16,8 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ github.token }}
     - run: make
-    - name: Get version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - uses: actions/upload-artifact@v2
       with:
-        name: pulu-${{ steps.get_version.outputs.VERSION }}
+        name: pulu-${{ github.sha }}
         path: 'BUILD/pulu-*.bin'
         retention-days: 30

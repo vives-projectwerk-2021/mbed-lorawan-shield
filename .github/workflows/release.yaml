@@ -1,5 +1,8 @@
-name: Compile test
-on: [push]
+name: Release
+on: 
+  push:
+    tags:
+    - '*'
 
 jobs:
   compile:
@@ -16,8 +19,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ github.token }}
     - run: make
-    - uses: actions/upload-artifact@v2
+    - uses: ncipollo/release-action@v1
       with:
-        name: pulu-${{ github.sha }}
-        path: 'BUILD/pulu-*.bin'
-        retention-days: 30
+        artifacts: 'BUILD/pulu-*.bin'
+        token: ${{ github.token }}
