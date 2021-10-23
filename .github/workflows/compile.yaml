@@ -1,5 +1,11 @@
 name: Compile
-on: [push]
+on:
+  push:
+    branches:
+    - '*'
+    - '!releases/**'
+    tags-ignore:
+      - '*'
 
 jobs:
   compile:
