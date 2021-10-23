@@ -13,3 +13,5 @@ mbed-lorawan-serialization/
 pulu-sensor-manager/
 pulu-converters/
 pulu-eeprom-organizer/
+
+!Makefile
