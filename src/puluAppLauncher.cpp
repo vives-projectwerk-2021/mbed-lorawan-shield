@@ -8,21 +8,22 @@ namespace Pulu {
     }
 
     void AppLauncher::launch() {
-
         if(eeprom_error) {
             // Error with eeprom --> device cannot work
-            printf("Launcher: eeprom error\n");
+            appLauncher_DEBUG("Error with eeprom");
+            appLauncher_DEBUG("Blocking application");
             while(true);
         }
         if(eeprom_valid) {
-            printf("Launcher: eeprom valid\n");
             // run App
+            appLauncher_DEBUG("Launching APP");
             App* app = new App(config, eeprom_config);
             app->run();
         }
         else {
-            printf("Launcher: eeprom invalid\n");
-            // re-initialize device
+            // flash valid eeprom config
+            appLauncher_DEBUG("Invalid eeprom config");
+            appLauncher_DEBUG("Launching EEPROM FLASHER");
             // TODO: read keys from serial
             Pulu::EEPROM_Config newConfig = {
                 0x02,

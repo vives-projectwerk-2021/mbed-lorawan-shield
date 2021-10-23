@@ -2,6 +2,11 @@
 #include "config.h"
 #include "eepromOrganizer.h"
 
+#define appLauncher_DEBUG(x, ...)   //set as comment to enable debugging
+#ifndef appLauncher_DEBUG
+#define appLauncher_DEBUG(x, ...) printf("[appLauncher]\t" x "\r\n", ##__VA_ARGS__)
+#endif
+
 namespace Pulu {
     class AppLauncher {
         public:

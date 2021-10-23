@@ -13,10 +13,19 @@ namespace Pulu {
     };
     
     void App::run() {
+        app_DEBUG("Initializing sensors");
         sensors.init();
+        app_DEBUG("Initialized sensors");
         while(true) {
-            LoRaMessage message = Pulu::Converters::sensorValues_to_LoRaMessage(sensors.values());
+            app_DEBUG("reading sensorValues");
+            Pulu::sensorValues sensorValues = sensors.values();
+            app_DEBUG("read sensorValues");
+            app_DEBUG("converting sensorValues to LoRaMessage");
+            LoRaMessage message = Pulu::Converters::sensorValues_to_LoRaMessage(sensorValues);
+            app_DEBUG("converted sensorValues to LoRaMessage");
+            app_DEBUG("scheduling message");
             node.send(message.getMessage(), message.getLength());
+            app_DEBUG("scheduled message");
             ThisThread::sleep_for(wait_time * 1s);
         }
     }
