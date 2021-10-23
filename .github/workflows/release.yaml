@@ -26,3 +26,4 @@ jobs:
       with:
         artifacts: 'BUILD/pulu-*.bin'
         token: ${{ github.token }}
+        allowUpdates: true
