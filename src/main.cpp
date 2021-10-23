@@ -1,8 +1,9 @@
-#include "puluApp.h"
+#include "puluAppLauncher.h"
 
-Pulu::App app;
+Pulu::AppLauncher appLauncher;
 
 int main(void)
 {
-  app.run();
+  appLauncher.launch();
+  return 0;
 }
