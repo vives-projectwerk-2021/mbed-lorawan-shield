@@ -13,6 +13,9 @@ jobs:
         - ${{ github.workspace }}:/firmware
     steps:
     - uses: actions/checkout@v2
-    - run: ls /firmware-builder/src
-    - run: ls /firmware/src
     - run: /firmware-builder/pulu-build.sh
+    - uses: actions/upload-artifact@v2
+      with:
+        name: firmware
+        path: '/firmware/BUILD/pulu-*.bin'
+        retention-days: 7
