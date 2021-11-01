@@ -15,7 +15,6 @@ namespace Pulu {
             void launch();
 
         private:
-            Pulu::config config;
             bool eeprom_valid;
             bool eeprom_error;
             Pulu::EEPROM_Config eeprom_config;
