@@ -15,6 +15,11 @@ namespace Pulu {
             void launch();
 
         private:
+            void clear_eeprom();
+            void launch_serialListener();
+            void launch_app();
+
+        private:
             bool eeprom_valid;
             bool eeprom_error;
             Pulu::EEPROM_Config eeprom_config;
