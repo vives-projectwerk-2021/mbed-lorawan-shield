@@ -2,6 +2,7 @@
 
 #include "LoRaMessage.h"
 #include "converters.h"
+#include "identifier.h"
 
 namespace Pulu {
     App::App(Pulu::config config, Pulu::EEPROM_Config eeprom_config) :
@@ -13,6 +14,8 @@ namespace Pulu {
     };
     
     void App::run() {
+        send_boot_message();
+
         app_DEBUG("Initializing sensors");
         sensors.init();
         app_DEBUG("Initialized sensors");
@@ -28,5 +31,22 @@ namespace Pulu {
             app_DEBUG("scheduled message");
             ThisThread::sleep_for(wait_time * 1s);
         }
+    }
+
+    void App::send_boot_message() {
+        app_DEBUG("creating boot message");
+        LoRaMessage message;
+        auto config = eeprom.read_config();
+        message.addUint8(config.version);
+        message.addUint16(config.wait_time);
+        auto uid = get_uid_bytes();
+        for(uint8_t i = 0; i<uid.size(); i++) {
+            message.addUint8(uid[i]);
+        }
+        app_DEBUG("created boot message");
+        app_DEBUG("scheduling boot message");
+        node.send(message.getMessage(), message.getLength(), 10);
+        app_DEBUG("scheduled boot message");
+        ThisThread::sleep_for(15s);
     }
 };

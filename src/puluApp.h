@@ -15,6 +15,9 @@ namespace Pulu {
             App(Pulu::config config, Pulu::EEPROM_Config eeprom_config);
 
             void run();
+
+        private:
+            void send_boot_message();
         
         private:
             uint16_t wait_time;
