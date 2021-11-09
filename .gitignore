@@ -6,8 +6,8 @@ mbed_settings.pyc
 BUILD/
 
 mbed-os/
-mbed-Simple-LoRaWAN/
 mbed-lorawan-serialization/
+pulu-Simple-LoRaWAN/
 pulu-sensor-manager/
 pulu-converters/
 pulu-eeprom-organizer/
