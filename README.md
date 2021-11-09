@@ -1,25 +1,25 @@
-# mbed LoRaWan shield
-
-Main program to send data from a NUCLEO_L476RG with LoRaWAN using the LoRaWAN Shield (developed at Vives).
-
-This project is inspired by the [LoRaWAN Shield Example](https://github.com/sillevl/lorawan-shield-example/) repository of [sillevl](https://github.com/sillevl).
+# Pulu Main Firmware
 
 ## Setup
 
 ### LoRaWAN indoor gateway
 
 Follow the steps from the [online documentation](https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/).
+
 ## Compile
 
 ### Pulu Firmware Builder (faster and preferred)
+
 The first time docker will pull [pulu-firmware-builder](https://github.com/vives-projectwerk-2021/pulu-firmware-builder/pkgs/container/pulu-firmware-builder). (2.3GB)
 
 Building the firmware without version tags (defaults to latest)
+
 ```bash
 make
 ```
 
 Building the firmware with version tags for the firmware and/or firmware-builder
+
 ```bash
 make VERSION=1.0.0 BUILDER_VERSION=1.1.0
 ```
@@ -42,13 +42,12 @@ We used [9-2019-q4-major](https://developer.arm.com/tools-and-software/open-sour
 ## Getting started
 
 - Clone the project
-- set the configuration in `src/config.h` based on the example in `src/config.example.h`
 - using mbed-cli
-    - install library dependencies using `mbed deploy`
-    - compile and flash using `mbed compile -f`
+  - install library dependencies using `mbed deploy`
+  - compile and flash using `mbed compile -f`
 - using pulu-firmware-builder
-    - compile using `make`
-    - output binary in `/BUILD/`
+  - compile using `make`
+  - output binary in `/BUILD/`
 - using github action releases
-    - download the binary files from the github release
-    - flash
+  - download the binary files from the github release
+  - flash
