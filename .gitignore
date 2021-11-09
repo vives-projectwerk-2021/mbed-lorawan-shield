@@ -5,8 +5,6 @@ mbed_settings.pyc
 
 BUILD/
 
-src/config.h
-
 mbed-os/
 mbed-Simple-LoRaWAN/
 mbed-lorawan-serialization/
