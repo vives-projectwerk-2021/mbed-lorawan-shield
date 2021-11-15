@@ -1,5 +1,6 @@
 #include "puluApp.h"
 
+#include "mbed.h"
 #include "LoRaMessage.h"
 #include "converters.h"
 #include "identifier.h"
@@ -11,6 +12,7 @@ namespace Pulu {
         sensors()
     {   
         wait_time = eeprom_config.wait_time;
+        node.on_received(mbed::callback(this, &App::node_on_receive));
     };
     
     void App::run() {
@@ -48,5 +50,15 @@ namespace Pulu {
         node.send(message.getMessage(), message.getLength(), 10);
         app_DEBUG("scheduled boot message");
         ThisThread::sleep_for(15s);
+    }
+
+    void App::node_on_receive(char* data, uint8_t length, uint8_t port) {
+        printf("Port: %d\n", port);
+        printf("Length: %d\n", length);
+        printf("Data: ");
+        for(uint8_t i = 0; i<length; i++) {
+            printf("%x ", data[i]);
+        }
+        printf("\n");
     }
 };

@@ -18,6 +18,8 @@ namespace Pulu {
 
         private:
             void send_boot_message();
+
+            void node_on_receive(char* data, uint8_t length, uint8_t port);
         
         private:
             uint16_t wait_time;
