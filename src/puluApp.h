@@ -12,7 +12,7 @@
 namespace Pulu {
     class App {
         public:
-            App(Pulu::config config, Pulu::EEPROM_Config eeprom_config);
+            App(Pulu::EEPROM_Config eeprom_config);
 
             void run();
 

@@ -6,9 +6,9 @@
 #include "identifier.h"
 
 namespace Pulu {
-    App::App(Pulu::config config, Pulu::EEPROM_Config eeprom_config) :
-        eeprom(config.eeprom.sda, config.eeprom.scl, config.eeprom.address),
-        node(eeprom_config.keys, config.lorawan.pins),
+    App::App(Pulu::EEPROM_Config eeprom_config) :
+        eeprom(Pulu::default_config.eeprom.i2c, Pulu::default_config.eeprom.address),
+        node(eeprom_config.keys, Pulu::default_config.lorawan.pins),
         sensors()
     {   
         wait_time = eeprom_config.wait_time;

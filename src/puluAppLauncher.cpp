@@ -4,8 +4,7 @@
 
 namespace Pulu {
     AppLauncher::AppLauncher() {
-        Pulu::config config;
-        EEPROM_Organizer eeprom(config.eeprom.sda, config.eeprom.scl, config.eeprom.address);
+        EEPROM_Organizer eeprom(Pulu::default_config.eeprom.i2c, Pulu::default_config.eeprom.address);
         eeprom_config = eeprom.read_config(&eeprom_valid, &eeprom_error);
     }
 
@@ -35,8 +34,7 @@ namespace Pulu {
     }
 
     void AppLauncher::clear_eeprom() {
-        Pulu::config config;
-        EEPROM_Organizer eeprom(config.eeprom.sda, config.eeprom.scl, config.eeprom.address);
+        EEPROM_Organizer eeprom(Pulu::default_config.eeprom.i2c, Pulu::default_config.eeprom.address);
         if(eeprom.clear()) {
             appLauncher_DEBUG("Error while clearing eeprom");
             while(true);
@@ -63,8 +61,7 @@ namespace Pulu {
         }
         appLauncher_DEBUG("Valid config");
 
-        Pulu::config config;
-        EEPROM_Organizer eeprom(config.eeprom.sda, config.eeprom.scl, config.eeprom.address);
+        EEPROM_Organizer eeprom(Pulu::default_config.eeprom.i2c, Pulu::default_config.eeprom.address);
         if(eeprom.write_config(eeprom_config)) {
             appLauncher_DEBUG("Couldn't flash new config");
             while(true);
@@ -74,8 +71,7 @@ namespace Pulu {
     }
 
     void AppLauncher::launch_app() {
-        Pulu::config config;
-        App* app = new App(config, eeprom_config);
+        App* app = new App(eeprom_config);
         app->run();
         delete app;
         while(true);

@@ -1,16 +1,19 @@
 #pragma once
 
 #include "simple-lorawan-config.h"
+#include "I2C.h"
 
 namespace Pulu {
     struct config {
         struct lorawan {
-            SimpleLoRaWAN::Pinmapping pins = { D11, D12, D13, A0, A1, D2, D3 };  // mosi, miso, clk, nss, reset, dio0, dio1
+            SimpleLoRaWAN::Pinmapping pins;
         } lorawan;
         struct eeprom {
-            PinName sda = D14;
-            PinName scl = D15;
-            uint16_t address = 0b1010000 << 1;
+            I2C* i2c;
+            uint8_t address;
         } eeprom;
     };
+
+    extern I2C i2c_1;
+    extern config default_config;
 };
