@@ -9,7 +9,7 @@ namespace Pulu {
     App::App(Pulu::EEPROM_Config eeprom_config) :
         eeprom(Pulu::default_config.eeprom.i2c, Pulu::default_config.eeprom.address),
         node(eeprom_config.keys, Pulu::default_config.lorawan.pins),
-        sensors()
+        sensors(Pulu::default_config.sensors)
     {   
         wait_time = eeprom_config.wait_time;
         node.on_received(mbed::callback(this, &App::node_on_receive));
