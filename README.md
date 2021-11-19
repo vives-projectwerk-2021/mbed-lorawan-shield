@@ -51,3 +51,8 @@ We used [9-2019-q4-major](https://developer.arm.com/tools-and-software/open-sour
 - using github action releases
   - download the binary files from the github release
   - flash
+
+## Flashing (using st-flash 1.7.0)
+```bash
+sudo st-flash --connect-under-reset write pulu-main-firmware.bin 0x08000000
+```
