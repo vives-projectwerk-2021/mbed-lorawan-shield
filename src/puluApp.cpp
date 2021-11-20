@@ -17,6 +17,7 @@ namespace Pulu {
     
     void App::run() {
         send_boot_message();
+        ThisThread::sleep_for(15s);
 
         app_DEBUG("Initializing sensors");
         sensors.init();
@@ -49,7 +50,6 @@ namespace Pulu {
         app_DEBUG("scheduling boot message");
         node.send(message.getMessage(), message.getLength(), 10);
         app_DEBUG("scheduled boot message");
-        ThisThread::sleep_for(15s);
     }
 
     void App::node_on_receive(char* data, uint8_t length, uint8_t port) {
@@ -60,5 +60,17 @@ namespace Pulu {
             printf("%x ", data[i]);
         }
         printf("\n");
+
+        if(port == 10 && length == 2) {
+            uint16_t new_wait_time = data[0]<<8 | data[1];
+            app_DEBUG("Received message to set wait_time to %d s", new_wait_time);
+            if(eeprom.write_config_wait_time(new_wait_time)) {
+                app_DEBUG("Failed to modify wait_time");
+            }
+            else {
+                wait_time = new_wait_time;
+                app_DEBUG("Modified wait_time");
+            }
+        }
     }
 };
