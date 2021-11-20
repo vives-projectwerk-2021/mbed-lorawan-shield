@@ -68,8 +68,9 @@ namespace Pulu {
                 app_DEBUG("Failed to modify wait_time");
             }
             else {
-                wait_time = new_wait_time;
-                app_DEBUG("Modified wait_time");
+                auto config = eeprom.read_config();
+                wait_time = config.wait_time;
+                app_DEBUG("Modified wait_time to %d s", wait_time);
             }
         }
     }
