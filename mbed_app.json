@@ -2,7 +2,8 @@
     "target_overrides": {
         "*": {
             "platform.stdio-baud-rate": 115200,
-            "target.components_add":    ["SX1276"]
+            "target.components_add":    ["SX1276"],
+            "target.device_has_add": ["USBDEVICE"]
         }
     }
 }
