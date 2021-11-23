@@ -16,8 +16,8 @@ namespace Pulu {
         },
         .sensors = {
             .temperature = {{
-                { &Pulu::i2c_3, 0x48 << 1 },
-                { &Pulu::i2c_3, 0x48 << 1 }
+                { &Pulu::i2c_3, 0x49 << 1 },    // air
+                { &Pulu::i2c_3, 0x48 << 1 }     // ground
             }}
         }
     };
