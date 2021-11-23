@@ -8,7 +8,7 @@ namespace Pulu {
 
     config default_config = {
         .lorawan = {
-            .pins = { D11, D12, D13, A0, A1, D2, D3 }  // mosi, miso, clk, nss, reset, dio0, dio1
+            .pins = { PA_7, PA_6, PA_5, PA_0, PA_1, PA_10, PB_2 }  // mosi, miso, clk, nss, reset, dio0, dio1
         },
         .eeprom = {
             .i2c = &Pulu::i2c_3,
