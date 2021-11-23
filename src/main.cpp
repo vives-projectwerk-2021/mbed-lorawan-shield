@@ -1,6 +1,6 @@
 #include "mbed.h"
 #include "USBSerial.h"
-USBSerial serial;
+USBSerial serial(false);
 
 FileHandle *mbed::mbed_override_console(int) {
   return &serial;
@@ -12,6 +12,8 @@ Pulu::AppLauncher appLauncher;
 
 int main(void)
 {
+  serial.connect();
+
   appLauncher.launch();
   return 0;
 }
