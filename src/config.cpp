@@ -18,6 +18,9 @@ namespace Pulu {
             .temperature = {{
                 { &Pulu::i2c_3, 0x49 << 1 },    // air
                 { &Pulu::i2c_3, 0x48 << 1 }     // ground
+            }},
+            .light = {{
+                { &Pulu::i2c_3, 0x29 << 1 }
             }}
         }
     };
