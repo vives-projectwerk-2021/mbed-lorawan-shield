@@ -21,6 +21,9 @@ namespace Pulu {
             }},
             .light = {{
                 { &Pulu::i2c_3, 0x29 << 1 }
+            }},
+            .moisture = {{
+                { &Pulu::i2c_3, 0 }
             }}
         }
     };
