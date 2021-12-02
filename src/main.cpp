@@ -1,6 +1,6 @@
 #include "mbed.h"
 #include "USBSerial.h"
-USBSerial serial(false);
+USBSerial serial(false, 0x0483, 0x5740);
 
 FileHandle *mbed::mbed_override_console(int) {
   return &serial;
