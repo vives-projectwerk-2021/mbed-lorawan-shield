@@ -1,6 +1,9 @@
 {
     "target_overrides": {
         "*": {
+            "pulu-sensor-manager.fake-light": false,
+            "pulu-sensor-manager.fake-moisture": false,
+            "pulu-sensor-manager.fake-temperature": false,
             "platform.stdio-baud-rate": 115200,
             "target.components_add":    ["SX1276"],
             "target.device_has_add": ["USBDEVICE"]
