@@ -16,7 +16,6 @@ namespace Pulu {
         Sensors::config sensors;
     };
 
-    extern I2C i2c_1;
-    extern I2C i2c_3;
+    extern I2C i2c_bus;
     extern config default_config;
 };
