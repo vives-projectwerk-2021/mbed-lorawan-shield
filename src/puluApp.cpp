@@ -53,14 +53,6 @@ namespace Pulu {
     }
 
     void App::node_on_receive(char* data, uint8_t length, uint8_t port) {
-        printf("Port: %d\n", port);
-        printf("Length: %d\n", length);
-        printf("Data: ");
-        for(uint8_t i = 0; i<length; i++) {
-            printf("%x ", data[i]);
-        }
-        printf("\n");
-
         if(port == 10 && length == 2) {
             uint16_t new_wait_time = data[0]<<8 | data[1];
             app_DEBUG("Received message to set wait_time to %d s", new_wait_time);
