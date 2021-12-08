@@ -39,7 +39,7 @@ namespace Pulu {
             #endif
             #if !MBED_CONF_PULU_SENSOR_MANAGER_FAKE_MOISTURE
             .moisture = {{
-                { &Pulu::i2c_bus, 0 }
+                { &Pulu::i2c_bus, 0x50 << 1 }
             }}
             #endif
         }
