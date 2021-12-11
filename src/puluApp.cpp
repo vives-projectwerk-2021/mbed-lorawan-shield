@@ -19,16 +19,13 @@ namespace Pulu {
         send_boot_message();
         ThisThread::sleep_for(15s);
 
-        app_DEBUG("Initializing sensors");
-        sensors.init();
-        app_DEBUG("Initialized sensors");
         while(true) {
-            app_DEBUG("reading sensorValues");
-            Pulu::sensorValues sensorValues = sensors.values();
-            app_DEBUG("read sensorValues");
-            app_DEBUG("converting sensorValues to LoRaMessage");
-            LoRaMessage message = Pulu::Converters::sensorValues_to_LoRaMessage(sensorValues);
-            app_DEBUG("converted sensorValues to LoRaMessage");
+            app_DEBUG("requesting sensor measurement");
+            auto measurement = sensors.do_measurement();
+            app_DEBUG("sensor measurement done");
+            app_DEBUG("converting measurement to LoRaMessage");
+            LoRaMessage message = Pulu::Converters::measurement_to_LoRaMessage(measurement);
+            app_DEBUG("converted measurement to LoRaMessage");
             app_DEBUG("scheduling message");
             node.send(message.getMessage(), message.getLength());
             app_DEBUG("scheduled message");

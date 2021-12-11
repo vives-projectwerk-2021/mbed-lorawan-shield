@@ -26,15 +26,15 @@ namespace Pulu {
             #endif
         },
         .sensors = {
+            #if !MBED_CONF_PULU_SENSOR_MANAGER_FAKE_LIGHT
+            .light = {{
+                { &Pulu::i2c_bus, 0x29 << 1 }
+            }},
+            #endif
             #if !MBED_CONF_PULU_SENSOR_MANAGER_FAKE_TEMPERATURE
             .temperature = {{
                 { &Pulu::i2c_bus, 0x49 << 1 },    // air
                 { &Pulu::i2c_bus, 0x48 << 1 }     // ground
-            }},
-            #endif
-            #if !MBED_CONF_PULU_SENSOR_MANAGER_FAKE_LIGHT
-            .light = {{
-                { &Pulu::i2c_bus, 0x29 << 1 }
             }},
             #endif
             #if !MBED_CONF_PULU_SENSOR_MANAGER_FAKE_MOISTURE
