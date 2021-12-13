@@ -5,4 +5,4 @@ BUILDER_VERSION = latest
 CONFIG = default
 
 all:
-	@ docker run -it -v $(firmware_path):/firmware ghcr.io/vives-projectwerk-2021/pulu-firmware-builder:$(BUILDER_VERSION) $(VERSION) $(CONFIG)
+	@ docker run --rm -it -v $(firmware_path):/firmware ghcr.io/vives-projectwerk-2021/pulu-firmware-builder:$(BUILDER_VERSION) $(VERSION) $(CONFIG)
