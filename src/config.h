@@ -16,7 +16,10 @@ namespace Pulu {
         Sensors::config sensors;
     };
 
-    extern I2C i2c_1;
-    extern I2C i2c_3;
+    #if MBED_CONF_APP_NUCLEO
+    extern I2C i2c_bus2;
+    #endif
+
+    extern I2C i2c_bus;
     extern config default_config;
 };

@@ -2,7 +2,7 @@
     "config": {
         "nucleo": {
             "help": "Use the setup to use it on nucleo instead of pulu hardware",
-            "value": false
+            "value": true
         }
     },
     "target_overrides": {

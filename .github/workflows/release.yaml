@@ -21,7 +21,9 @@ jobs:
     - name: Get version
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
-    - run: make VERSION=${{ steps.get_version.outputs.VERSION }}
+    - run: make VERSION=${{ steps.get_version.outputs.VERSION }} CONFIG=default
+    - run: make VERSION=${{ steps.get_version.outputs.VERSION }} CONFIG=nucleo
+    - run: make VERSION=${{ steps.get_version.outputs.VERSION }} CONFIG=nucleo_fake
     - uses: ncipollo/release-action@v1
       with:
         artifacts: 'BUILD/pulu-*.bin'
