@@ -3,7 +3,6 @@ on:
   pull_request:
   push:
     branches:
-    - 'main'
     - '!releases/**'
     tags-ignore:
       - '*'
@@ -22,7 +21,9 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ github.token }}
-    - run: make
+    - run: make CONFIG=default
+    - run: make CONFIG=nucleo
+    - run: make CONFIG=nucleo_fake
     - uses: actions/upload-artifact@v2
       with:
         name: pulu-${{ github.sha }}
