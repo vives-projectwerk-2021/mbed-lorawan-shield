@@ -26,5 +26,6 @@ jobs:
     - run: make CONFIG=nucleo_fake
     - uses: actions/upload-artifact@v2
       with:
-        path: 'BUILD/pulu-*'
+        name: pulu-binaries-${{ github.sha }}
+        path: 'BUILD/pulu-*.bin'
         retention-days: 30
