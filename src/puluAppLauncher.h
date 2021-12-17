@@ -1,4 +1,6 @@
 #pragma once
+#include "USBSerial.h"
+#include "BufferedSerial.h"
 #include "config.h"
 #include "eepromOrganizer.h"
 
@@ -12,6 +14,9 @@ namespace Pulu {
         public:
             AppLauncher();
 
+            void setSerial(BufferedSerial* bufferedSerial);
+            void setSerial(USBSerial* usb);
+
             void launch();
 
         private:
@@ -23,5 +28,8 @@ namespace Pulu {
             bool eeprom_valid;
             bool eeprom_error;
             Pulu::EEPROM_Config eeprom_config;
+
+            BufferedSerial* bufferedSerial = nullptr;
+            USBSerial* usb = nullptr;
     };
 };
